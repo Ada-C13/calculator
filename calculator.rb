@@ -3,9 +3,9 @@
 # Display welcome message and instructions
 puts "Welcome to the calculator program! Which operation would you like to use?"
 puts "\n1. add(+) \n2. substraction(-) \n3. multiply(*) \n4. divide(/)"
-puts "\nPlease choose one operator(name or symbol):"
+puts "\nPlease choose one operator(number, name or symbol for the operation):"
 
-acceptable_operation = %w(add + subtract - multiply * divide /)
+acceptable_operation = %w(1 add + 2 subtract - 3 multiply * 4 divide /)
 
 # Methods for operations
 def addition (x, y)
