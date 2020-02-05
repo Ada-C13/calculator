@@ -23,7 +23,7 @@ end
 
 #Validate if the input is Number
 def ValidNumber (number)
-until number.to_i == number
+  until (Integer(number) rescue nil) !=nil || (Float(number) rescue nil) !=nil #Returns nil if it is not integer or Float else returns number
   puts "Enter a valid number"
   number = gets.chomp.to_i
 end
