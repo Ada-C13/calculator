@@ -47,16 +47,16 @@ equation = {
 
 equation.each do |segment, value| #populate each part of the equation with user input, validating as you go
   print "Please give me the #{segment.to_s} > "
-  input = gets.strip.to_s
+  input = gets.strip
 
   if segment == "operator" 
     until operators.any? { |keys, values| values.include?(input)} 
       print "Invalid operator. Try again. > "
-      input = gets.strip.to_s
+      input = gets.strip
     end
   else 
-    until input.to_f.to_s == input || input.to_f.round(2).to_s == input || '%.2f' % input.to_f.to_s == input 
-      print "'#{input}' (#{input.class}) is not a valid number. Please try again. > "
+    until input.to_f.to_s == input || input.to_i.to_s == input || '%.2f' % input.to_f.to_s == input 
+      puts "Whoops, '#{input}' (#{input.class}) is not a valid number. Please try again."
       input = gets.strip
     end
   end
