@@ -1,31 +1,43 @@
 # CALCULATOR
 # Program accepts user input to perform calculator evaluations.
 
-# TODO: 
-# -Write the actual evaluation function 
-# -refactor validate code 
-
-
 operators = { 
-  :addition => ["+", "plus", "add"],
-  :subtraction => ["-", "minus", "subtract"],
-  :multiplication => ["*", "times","multiply"],
-  :division => ["/", "divide","split"],
+  :addition => ["+", "plus", "add", "addition"],
+  :subtraction => ["-", "minus", "subtract", "subtraction"],
+  :multiplication => ["*", "times","multiply", "multiplication"],
+  :division => ["/", "divide","split","division"],
   :mod => ["%", "mod","modulo"],
-  :exponentialize => ["^", "to the power of","exponential"]
+  :exponentialize => ["^", "to the power of","exponential","exponentialize"]
 }
 
+def calculate(equation, operators)
+  case equation["operator"]
+    when *(operators[:addition])
+      puts "Answer: #{equation["left number"].to_f.round(2) + equation["right number"].to_f.round(2)}"
+    when *(operators[:subtraction])
+      puts "Answer: #{equation["left number"].to_f.round(2) - equation["right number"].to_f.round(2)}"
+    when *(operators[:multiplication])
+      puts "Answer: #{equation["left number"].to_f.round(2) * equation["right number"].to_f.round(2)}"
+    when *(operators[:division])
+      puts "Answer: #{equation["left number"].to_f.round(2) / equation["right number"].to_f.round(2)}"
+    when *(operators[:mod])
+      puts "Answer: #{equation["left number"].to_f.round(2) % equation["right number"].to_f.round(2)}"
+    when *(operators[:exponentialize])
+      puts "Answer: #{equation["left number"].to_f.round(2) ** equation["right number"].to_f.round(2)}"
+    else
+      puts "Nothing to evaluate."
+  end
+end
 
 puts "CALCULATOR"
 puts "**********\n\n"
-
 puts "Welcome to the CALCULATOR. Available operators include:\n\n"
 
-#pretty-print the list of valid operators 
 operators.each do |k,v|
   puts "#{k}: #{v.join(", ")}"
 end
 
+puts "********\n\n"
 
 equation = {
   "operator" => nil,
@@ -33,25 +45,24 @@ equation = {
   "right number" => nil,
 }
 
-equation.each do |equation_piece, value|
-  print "Please give me the #{equation_piece.to_s} > "
-  input = gets.strip
+equation.each do |segment, value| #populate each part of the equation with user input, validating as you go
+  print "Please give me the #{segment.to_s} > "
+  input = gets.strip.to_s
 
-  if equation_piece == "operator"
-    until operators.all? {|operation| operation.has} #TO-DO: figure out how to check input against all data in the operator array to find match
-    operators.each do |operator, value|
-      puts "\n"
-      puts input.class
-      puts operator.class
-      puts value
-      puts value.include? input
-
+  if segment == "operator" 
+    until operators.any? { |keys, values| values.include?(input)} 
+      print "Invalid operator. Try again. > "
+      input = gets.strip.to_s
+    end
+  else 
+    until input.to_f.to_s == input || input.to_f.round(2).to_s == input || '%.2f' % input.to_f.to_s == input 
+      print "'#{input}' (#{input.class}) is not a valid number. Please try again. > "
+      input = gets.strip
+    end
   end
+  equation[segment] = input
 
-
-  end
 end
 
-puts "\n\nEvaluating the following: #{equation["left number"]} #{equation["operator"]} #{equation["right number"]}"
-
-
+puts "\n\nEvaluating the following input: #{equation["left number"]} #{equation["operator"]} #{equation["right number"]}"
+puts calculate(equation, operators)
