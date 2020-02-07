@@ -3,7 +3,7 @@
 # Display welcome message and instructions
 puts "Welcome to the calculator program! Which operation would you like to use?"
 puts "\n1. add(+) \n2. substraction(-) \n3. multiply(*) \n4. divide(/)"
-puts "\nPlease choose one operator(number, name or symbol for the operation):"
+puts "\nPlease choose one operator(name or symbol):"
 
 acceptable_operation = %w(1 add + 2 subtract - 3 multiply * 4 divide /)
 
@@ -57,21 +57,23 @@ second_number = verify_number(second_number)
 # Calculate operation user requested
 case operation
   when "add", "+", "1"
-  puts "You have chosen to add " "#{first_number} with #{second_number}"
-  result = addition(first_number, second_number)
+    puts "You have chosen to add " "#{first_number} with #{second_number}"
+    result = addition(first_number, second_number)
   when "substraction", "-", "2"
-  puts "You have chosen to substract " "#{first_number} with #{second_number}"
-  result = substraction(first_number, second_number)
+    puts "You have chosen to substract " "#{first_number} with #{second_number}"
+    result = substraction(first_number, second_number)
   when "divide", "/", "3"
-  puts "You have chosen to divide " "#{first_number} by #{second_number}"
-    if second_number == 0
-      result = 0
-    else
-      result = division(first_number, second_number)
-    end
+    puts "You have chosen to divide " "#{first_number} by #{second_number}"
+      if second_number == 0
+        puts = "Cannot divide by zero"
+      elsif first_number == 0
+        result = 0
+      else
+        result = division(first_number, second_number)
+      end
   when "multiply", "*", "4"
-  puts "You have chosen to multiply " "#{first_number} with #{second_number}"
-  result = multiplication(first_number, second_number)
+    puts "You have chosen to multiply " "#{first_number} with #{second_number}"
+    result = multiplication(first_number, second_number)
   else 
   puts "You have made an invalid choice"
 end
