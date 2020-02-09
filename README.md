@@ -4,6 +4,7 @@
 
 - Individual, [stage 1](https://github.com/Ada-Developers-Academy/pedagogy/blob/master/classroom/rule-of-three.md#stage-1) project
 - Due before class, **Wed, Feb 5**
+- Submitted in time
 
 ## Learning Goals
 
