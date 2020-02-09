@@ -9,7 +9,7 @@ Which operator woudl you like to use?
 1. add(+)
 2. subtract(-)
 3. multiply(*)
-4. devide (/)
+4. divide (/)
 Please choose one operator (name or symbol)"
 
 command = gets.chomp.downcase
@@ -61,4 +61,3 @@ when "divide", "/"
   puts "We're dividing numbers"
   puts "#{num_1} / #{num_2}: #{num_1 / num_2}"
 end
-
