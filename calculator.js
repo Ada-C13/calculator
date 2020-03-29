@@ -21,7 +21,8 @@ const getInteger = function(prompt) {
 // Greeting
 console.log(`\nWelcome to the Calculator Program.`);
 let choice = "";
-
+let first  = 0;
+let second = 0;
 while (choice != `5`) {
 
   // Ask for Operations
@@ -33,39 +34,34 @@ while (choice != `5`) {
   console.log(`5. quit`);
   choice  = readline.question(`Please choose one operator (name or symbol): `).toLowerCase();
 
+  if ([`add`, `+`, `1`, `subtract`, `-`, `2`, `multiply`, `*`, `3`, `divide`, `/`, `4`].includes(choice)) {
+    first  = getInteger(`\nEnter first number: `);
+    second = getInteger(`Enter second number: `);
+  }
+
   // Process Each Operation
-  let first  = 0;
-  let second = 0;
   switch (choice) {
     case `add`:
     case `+`:
     case `1`:
-      first  = getInteger(`\nEnter first number: `);
-      second = getInteger(`Enter second number: `);
       let addition = first + second;
       console.log(`${first} + ${second} = ${addition}`);
       break;
     case `subtract`:
     case `-`:
     case `2`:
-      first  = getInteger(`\nEnter first number: `);
-      second = getInteger(`Enter second number: `);
       let subtraction = first - second;
       console.log(`${first} - ${second} = ${subtraction}`);
       break;
     case `multiply`:
     case `*`:
     case `3`:
-      first  = getInteger(`\nEnter first number: `);
-      second = getInteger(`Enter second number: `);
       let multiplication = first * second;
       console.log(`${first} * ${second} = ${multiplication}`);
       break;
     case `divide`:
     case `/`:
     case `4`:
-      first  = getInteger(`\nEnter first number: `);
-      second = getInteger(`Enter second number: `);
       if (second == 0) {
         console.log( `Not a valid operation. Can't divide by zero (0). Try it again.`);
         not_valid = true;
