@@ -8,7 +8,7 @@ const readline = require(`readline-sync`);
 const getInteger = function(prompt) {
   // Wait for user's response
   let input = ``;
-  while (input == ``) {
+  while (input === ``) {
     input = readline.question(prompt);
     if (isNaN(input)) {
       console.log(`Invalid number`);
@@ -23,7 +23,7 @@ console.log(`\nWelcome to the Calculator Program.`);
 let choice = "";
 let first  = 0;
 let second = 0;
-while (choice != `5`) {
+while (choice !== `5`) {
 
   // Ask for Operations
   console.log(`\nWhich operator would you like to use?`);
@@ -62,9 +62,8 @@ while (choice != `5`) {
     case `divide`:
     case `/`:
     case `4`:
-      if (second == 0) {
+      if (second === 0) {
         console.log( `Not a valid operation. Can't divide by zero (0). Try it again.`);
-        not_valid = true;
       } else {
         let division = first / second;
         console.log( `${first} / ${second} = ${division}`); 
@@ -77,7 +76,6 @@ while (choice != `5`) {
       break;
     default:
       console.log( `This is not a valid operation. Try again.`);
-      not_valid = true;
   } // end switch (choice)
 
 } // end while (choice)
